@@ -2,40 +2,41 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Oda Randevu Sistemi</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Randevu Sistemi</title>
 </head>
 <body>
 
-<div class="login">
-  <h2>🔐 Admin Giriş</h2>
-  <input type="password" id="sifre" placeholder="Şifre">
-  <button onclick="giris()">Giriş</button>
-</div>
+<h2>Randevu Oluştur</h2>
 
-<div class="panel hidden">
-  <h1>🎤 Oda Randevu Paneli</h1>
+<label>Ad Soyad</label><br>
+<input id="adSoyad"><br><br>
 
-  <label>Oda</label>
-  <select id="oda"></select>
+<label>Telefon</label><br>
+<input id="telefon"><br><br>
 
-  <label>Gün</label>
-  <input type="date" id="tarih">
+<label>Randevu Günü</label><br>
+<input type="date" id="gun"><br><br>
 
-  <label>Saat</label>
-  <input type="time" id="saat">
+<label>Randevu Saati</label><br>
+<input type="time" id="saat"><br><br>
 
-  <label>İsim</label>
-  <input id="ad">
+<label>Kişi Sayısı</label><br>
+<input type="number" id="kisiSayisi" value="1"><br><br>
 
-  <label>Not</label>
-  <textarea id="not"></textarea>
+<label>Oda</label><br>
+<select id="oda">
+  <option>Bozuk Mikrofon</option>
+  <option>Patlak Hoparlör</option>
+  <option>Çatlak Ses</option>
+  <option>Sahne</option>
+  <option>Stüdyo - Prova</option>
+  <option>Stüdyo - Kayıt</option>
+</select><br><br>
 
-  <button onclick="kaydet()">Randevu Kaydet</button>
+<label>Notlar</label><br>
+<textarea id="notlar"></textarea><br><br>
 
-  <h2>📋 Randevular</h2>
-  <ul id="liste"></ul>
-</div>
+<button onclick="kaydet()">Kaydet</button>
 
 <script src="script.js"></script>
 </body>
