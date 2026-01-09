@@ -2,41 +2,44 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Randevu Sistemi</title>
+  <title>Randevu Oluştur</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Randevu Oluştur</h2>
+<div class="container">
+  <h2>Randevu Oluştur</h2>
 
-<label>Ad Soyad</label><br>
-<input id="adSoyad"><br><br>
+  <label>Ad Soyad</label>
+  <input type="text" id="adSoyad">
 
-<label>Telefon</label><br>
-<input id="telefon"><br><br>
+  <label>Telefon</label>
+  <input type="tel" id="telefon">
 
-<label>Randevu Günü</label><br>
-<input type="date" id="gun"><br><br>
+  <label>Randevu Günü</label>
+  <input type="date" id="gun">
 
-<label>Randevu Saati</label><br>
-<input type="time" id="saat"><br><br>
+  <label>Randevu Saati</label>
+  <input type="time" id="saat">
 
-<label>Kişi Sayısı</label><br>
-<input type="number" id="kisiSayisi" value="1"><br><br>
+  <label>Kişi Sayısı</label>
+  <input type="number" id="kisiSayisi" value="1" min="1">
 
-<label>Oda</label><br>
-<select id="oda">
-  <option>Bozuk Mikrofon</option>
-  <option>Patlak Hoparlör</option>
-  <option>Çatlak Ses</option>
-  <option>Sahne</option>
-  <option>Stüdyo - Prova</option>
-  <option>Stüdyo - Kayıt</option>
-</select><br><br>
+  <label>Oda</label>
+  <select id="oda">
+    <option>Bozuk Mikrofon</option>
+    <option>Patlak Hoparlör</option>
+    <option>Çatlak Ses</option>
+    <option>Sahne</option>
+    <option>Stüdyo - Prova</option>
+    <option>Stüdyo - Kayıt</option>
+  </select>
 
-<label>Notlar</label><br>
-<textarea id="notlar"></textarea><br><br>
+  <label>Notlar</label>
+  <textarea id="notlar"></textarea>
 
-<button onclick="kaydet()">Kaydet</button>
+  <button onclick="kaydet()">Kaydet</button>
+</div>
 
 <script src="script.js"></script>
 </body>
