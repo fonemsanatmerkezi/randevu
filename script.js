@@ -1,25 +1,29 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbwB1oCleAyUsBllYeXWgvD9vDGI05bHoza_DRf-wenCiSmEkEVMEsLkkV0CO0RA82w1wA/exec";
-
 function kaydet() {
-  const data = {
-    adSoyad: document.getElementById("adSoyad").value,
+
+  const veri = {
+    musteriadSoyad: document.getElementById("adSoyad").value,
     telefon: document.getElementById("telefon").value,
     gun: document.getElementById("gun").value,
     saat: document.getElementById("saat").value,
     kisiSayisi: document.getElementById("kisiSayisi").value,
-    oda: document.getElementById("oda").value,
+    oda: document.getElementById("oda").value, // 🔥 EN ÖNEMLİ SATIR
     notlar: document.getElementById("notlar").value
   };
 
-  fetch(API_URL, {
+  fetch("BURAYA_APPS_SCRIPT_URL_GELECEK", {
     method: "POST",
-    body: JSON.stringify(data)
+    body: JSON.stringify(veri),
+    headers: {
+      "Content-Type": "application/json"
+    }
   })
-  .then(() => {
+  .then(res => res.text())
+  .then(cevap => {
     alert("Randevu kaydedildi");
-    document.querySelectorAll("input, textarea").forEach(e => e.value = "");
+    console.log(veri); // 🔍 TEST İÇİN
   })
-  .catch(() => {
+  .catch(err => {
     alert("Hata oluştu");
+    console.error(err);
   });
 }
