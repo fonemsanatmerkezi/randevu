@@ -11,7 +11,7 @@ function kaydet() {
     notlar: document.getElementById("notlar").value
   };
 
-  fetch("BURAYA_APPS_SCRIPT_URL", {
+  fetch("APPS_SCRIPT_URL_BURADA_OLACAK", {
     method: "POST",
     body: JSON.stringify(veri),
     headers: { "Content-Type": "application/json" }
