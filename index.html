@@ -2,45 +2,51 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Fonem Randevu</title>
+  <title>Fonem Randevu Sistemi</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-  <h2>🎵 Fonem Randevu</h2>
+  <div class="container">
+    <h1>Fonem Randevu Sistemi</h1>
 
-  <label>Ad Soyad</label>
-  <input type="text" id="adSoyad" placeholder="Adınız Soyadınız">
+    <label>Müşteri Adı Soyadı</label>
+    <input type="text" id="adSoyad" required>
 
-  <label>Telefon</label>
-  <input type="tel" id="telefon" placeholder="05xx xxx xx xx">
+    <label>Müşteri Telefon Numarası</label>
+    <input type="tel" id="telefon" required>
 
-  <label>Randevu Günü</label>
-  <input type="date" id="gun">
+    <label>Ödeme Durumu</label>
+    <select id="odeme">
+      <option value="Alındı">Alındı</option>
+      <option value="Alınmadı">Alınmadı</option>
+    </select>
 
-  <label>Randevu Saati</label>
-  <input type="time" id="saat">
+    <label>Randevu Günü</label>
+    <input type="date" id="gun" required>
 
-  <label>Kişi Sayısı</label>
-  <input type="number" id="kisiSayisi" value="1" min="1">
+    <label>Randevu Saati</label>
+    <input type="time" id="saat" required>
 
-  <label>Oda</label>
-  <select id="oda">
-    <option value="Bozuk Mikrofon">Bozuk Mikrofon</option>
-    <option value="Patlak Hoparlör">Patlak Hoparlör</option>
-    <option value="Çatlak Ses">Çatlak Ses</option>
-    <option value="Sahne">Sahne</option>
-    <option value="Stüdyo - Prova">Stüdyo - Prova</option>
-    <option value="Stüdyo - Kayıt">Stüdyo - Kayıt</option>
-  </select>
+    <label>Kişi Sayısı</label>
+    <input type="number" id="kisiSayisi" min="1" value="1">
 
-  <label>Notlar</label>
-  <textarea id="notlar" placeholder="Varsa eklemek istedikleriniz"></textarea>
+    <label>Oda</label>
+    <select id="oda">
+      <option value="Bozuk Mikrofon">Bozuk Mikrofon</option>
+      <option value="Patlak Hoparlör">Patlak Hoparlör</option>
+      <option value="Çatlak Ses">Çatlak Ses</option>
+      <option value="Sanki Sahne">Sanki Sahne</option>
+      <option value="Stüdyo - Prova">Stüdyo - Prova</option>
+      <option value="Stüdyo - Kayıt">Stüdyo - Kayıt</option>
+    </select>
 
-  <button onclick="kaydet()">Randevu Oluştur</button>
-</div>
+    <label>Notlar</label>
+    <textarea id="notlar"></textarea>
 
-<script src="script.js"></script>
+    <button onclick="kaydet()">Kaydet</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
