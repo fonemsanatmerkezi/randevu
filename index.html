@@ -7,64 +7,46 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>Fonem Randevu Sistemi</h1>
+  <div class="page">
+    <div class="container">
+      <h1>Fonem Randevu Sistemi</h1>
 
-    <div class="form-group">
       <label>Müşteri Adı Soyadı</label>
-      <input type="text" id="adSoyad" placeholder="Ad Soyad">
-    </div>
+      <input type="text" id="adSoyad">
 
-    <div class="form-group">
       <label>Müşteri Telefon Numarası</label>
-      <input type="tel" id="telefon" placeholder="05xx xxx xx xx">
-    </div>
+      <input type="tel" id="telefon">
 
-    <div class="form-group">
       <label>Ödeme Durumu</label>
       <select id="odeme">
         <option value="Alındı">Alındı</option>
         <option value="Alınmadı">Alınmadı</option>
       </select>
-    </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <label>Randevu Günü</label>
-        <input type="date" id="gun">
-      </div>
+      <label>Randevu Günü</label>
+      <input type="date" id="gun">
 
-      <div class="form-group">
-        <label>Randevu Saati</label>
-        <input type="time" id="saat">
-      </div>
-    </div>
+      <label>Randevu Saati</label>
+      <input type="time" id="saat">
 
-    <div class="form-row">
-      <div class="form-group">
-        <label>Kişi Sayısı</label>
-        <input type="number" id="kisiSayisi" min="1" value="1">
-      </div>
+      <label>Kişi Sayısı</label>
+      <input type="number" id="kisiSayisi" min="1" value="1">
 
-      <div class="form-group">
-        <label>Oda</label>
-        <select id="oda">
-          <option value="Bozuk Mikrofon">Bozuk Mikrofon</option>
-          <option value="Patlak Hoparlör">Patlak Hoparlör</option>
-          <option value="Çatlak Ses">Çatlak Ses</option>
-          <option value="Sanki Sahne">Sanki Sahne</option>
-          <option value="Stüdyo - Prova">Stüdyo - Prova</option>
-          <option value="Stüdyo - Kayıt">Stüdyo - Kayıt</option>
-        </select>
-      </div>
-    </div>
+      <label>Oda</label>
+      <select id="oda">
+        <option value="Bozuk Mikrofon">Bozuk Mikrofon</option>
+        <option value="Patlak Hoparlör">Patlak Hoparlör</option>
+        <option value="Çatlak Ses">Çatlak Ses</option>
+        <option value="Sahne">Sahne</option>
+        <option value="Stüdyo - Prova">Stüdyo - Prova</option>
+        <option value="Stüdyo - Kayıt">Stüdyo - Kayıt</option>
+      </select>
 
-    <div class="form-group">
       <label>Notlar</label>
-      <textarea id="notlar" placeholder="Varsa ek notlar..."></textarea>
-    </div>
+      <textarea id="notlar"></textarea>
 
-    <button onclick="kaydet()">Kaydet</button>
+      <button onclick="kaydet()">Kaydet</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
