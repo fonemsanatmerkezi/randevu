@@ -1,102 +1,29 @@
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
+function kaydet() {
 
-body {
-  margin: 0;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-}
+  const veri = {
+    adSoyad: document.getElementById("adSoyad").value,
+    telefon: document.getElementById("telefon").value,
+    gun: document.getElementById("gun").value,
+    saat: document.getElementById("saat").value,
+    kisiSayisi: document.getElementById("kisiSayisi").value,
+    oda: document.getElementById("oda").value,
+    odeme: document.getElementById("odeme").value,
+    notlar: document.getElementById("notlar").value
+  };
 
-.container {
-  background: rgba(0, 0, 0, 0.75);
-  padding: 28px;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 440px;
-  box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
-}
-
-h1 {
-  text-align: center;
-  color: #00ffcc;
-  margin-bottom: 22px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 14px;
-}
-
-.form-row {
-  display: flex;
-  gap: 12px;
-}
-
-.form-row .form-group {
-  flex: 1;
-}
-
-label {
-  font-size: 14px;
-  margin-bottom: 6px;
-  color: #ddd;
-}
-
-input,
-select,
-textarea {
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background: #1e1e1e;
-  color: #fff;
-  font-size: 15px;
-}
-
-option {
-  background: #fff;
-  color: #000;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #aaa;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: #00ffcc;
-  box-shadow: 0 0 8px rgba(0, 255, 204, 0.6);
-}
-
-textarea {
-  min-height: 80px;
-  resize: vertical;
-}
-
-button {
-  margin-top: 18px;
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #00ffcc, #00bfa6);
-  color: #000;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  box-shadow: 0 0 14px rgba(0, 255, 204, 0.8);
+  fetch("BURAYA_APPS_SCRIPT_URL", {
+    method: "POST",
+    body: JSON.stringify(veri),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.text())
+  .then(() => {
+    alert("Randevu kaydedildi");
+  })
+  .catch(err => {
+    alert("Hata oluştu");
+    console.error(err);
+  });
 }
