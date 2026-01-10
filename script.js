@@ -11,11 +11,19 @@ function kaydet() {
     notlar: document.getElementById("notlar").value
   };
 
-  fetch("APPS_SCRIPT_URL_BURAYA", {
+  fetch("BURAYA_APPS_SCRIPT_URL", {
     method: "POST",
     body: JSON.stringify(veri),
-    headers: { "Content-Type": "application/json" }
+    headers: {
+      "Content-Type": "application/json"
+    }
   })
-  .then(() => alert("Randevu kaydedildi"))
-  .catch(() => alert("Hata oluştu"));
+  .then(res => res.text())
+  .then(() => {
+    alert("Randevu kaydedildi");
+  })
+  .catch(err => {
+    alert("Hata oluştu");
+    console.error(err);
+  });
 }
