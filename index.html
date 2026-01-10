@@ -10,49 +10,55 @@
   <div class="page">
     <div class="container">
       <h1>Fonem Randevu Sistemi</h1>
+<h1>Fonem Randevu Sistemi</h1>
 
-      <label>Müşteri Adı Soyadı</label>
-      <input type="text" id="adSoyad">
-
-  <label for="adSoyad">Müşteri Adı Soyadı</label>
-<input type="text" id="adSoyad" placeholder="Ad Soyad">
+<label for="adSoyad">Müşteri Adı Soyadı</label>
+<input
+  type="text"
+  id="adSoyad"
+  placeholder="Ad Soyad">
 
 <label for="telefon">Müşteri Telefon Numarası</label>
-<input 
-  type="tel" 
-  id="telefon" 
+<input
+  type="tel"
+  id="telefon"
   placeholder="05xxxxxxxxx"
   maxlength="11">
 
-      <label>Ödeme Durumu</label>
-      <select id="odeme">
-        <option value="Alınmadı">Alınmadı</option>
-        <option value="Alındı">Alındı</option>
-      </select>
+<label for="odeme">Ödeme Durumu</label>
+<select id="odeme">
+  <option value="Alınmadı" selected>Alınmadı</option>
+  <option value="Alındı">Alındı</option>
+</select>
 
-      <label>Randevu Günü</label>
-      <input type="date" id="gun">
+<label for="gun">Randevu Günü</label>
+<input type="date" id="gun">
 
-      <label>Randevu Saati</label>
-      <input type="time" id="saat">
+<label for="saat">Randevu Saati</label>
+<input type="time" id="saat">
 
-      <label>Kişi Sayısı</label>
-      <input type="number" id="kisiSayisi" min="1" value="1">
+<label for="kisiSayisi">Kişi Sayısı</label>
+<input
+  type="number"
+  id="kisiSayisi"
+  min="1"
+  value="1">
 
-      <label>Oda</label>
-      <select id="oda">
-        <option>Bozuk Mikrofon</option>
-        <option>Patlak Hoparlör</option>
-        <option>Çatlak Ses</option>
-        <option>Sanki Sahne</option>
-        <option>Stüdyo - Prova</option>
-        <option>Stüdyo - Kayıt</option>
-      </select>
+<label for="oda">Oda</label>
+<select id="oda">
+  <option>Bozuk Mikrofon</option>
+  <option>Patlak Hoparlör</option>
+  <option>Çatlak Ses</option>
+  <option>Sanki Sahne</option>
+  <option>Stüdyo - Prova</option>
+  <option>Stüdyo - Kayıt</option>
+</select>
 
-      <label>Notlar</label>
-      <textarea id="notlar"></textarea>
+<label for="notlar">Notlar</label>
+<textarea id="notlar"></textarea>
 
-      <button onclick="kaydet()">Kaydet</button>
+<button onclick="kaydet()">Kaydet</button>
+
     </div>
   </div>
 
