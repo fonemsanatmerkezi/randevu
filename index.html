@@ -14,11 +14,14 @@
       <label>Müşteri Adı Soyadı</label>
       <input type="text" id="adSoyad">
 
-    <input 
-  type="tel" 
-  id="telefon" 
+   <input 
+  type="tel"
+  id="telefon"
   placeholder="05xxxxxxxxx"
-  maxlength="11">
+  pattern="05[0-9]{9}"
+  maxlength="11"
+  required>
+
 
 
       <label>Ödeme Durumu</label>
