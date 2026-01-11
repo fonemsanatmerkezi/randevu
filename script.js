@@ -1,14 +1,18 @@
 const EXEC_URL = "https://script.google.com/macros/s/AKfycby3K3nV1ARg00Z31wO4vFjpv16aRNu9fK-5QtHzKI-cy_WX4UNnX3AFfbK7xCFXfRAn/exec"; // Apps Script /exec URL
 
 function kaydet() {
+  // ID otomatik oluşturabiliriz (timestamp kullanıyorum)
+  const id = new Date().getTime();
+
   const veri = {
-    adSoyad: document.getElementById("adSoyad").value,
-    telefon: document.getElementById("telefon").value,
-    gun: document.getElementById("gun").value,
-    saat: document.getElementById("saat").value,
-    kisiSayisi: document.getElementById("kisiSayisi").value,
-    oda: document.getElementById("oda").value,
-    odeme: document.getElementById("odeme").value,
+    id: id,
+    musteriadisoyadi: document.getElementById("musteriadisoyadi").value,
+    musteritelefonu: document.getElementById("musteritelefonu").value,
+    randevutarihi: document.getElementById("randevutarihi").value,
+    randevusaati: document.getElementById("randevusaati").value,
+    kisisayisi: document.getElementById("kisisayisi").value,
+    odaadi: document.getElementById("odaadi").value,
+    odemedurumu: document.getElementById("odemedurumu").value,
     notlar: document.getElementById("notlar").value
   };
 
@@ -48,12 +52,12 @@ function rapor() {
 }
 
 function temizleForm() {
-  document.getElementById("adSoyad").value = "";
-  document.getElementById("telefon").value = "";
-  document.getElementById("gun").value = "";
-  document.getElementById("saat").value = "";
-  document.getElementById("kisiSayisi").value = 1;
-  document.getElementById("oda").selectedIndex = 0;
-  document.getElementById("odeme").selectedIndex = 0;
+  document.getElementById("musteriadisoyadi").value = "";
+  document.getElementById("musteritelefonu").value = "";
+  document.getElementById("randevutarihi").value = "";
+  document.getElementById("randevusaati").value = "";
+  document.getElementById("kisisayisi").value = 1;
+  document.getElementById("odaadi").selectedIndex = 0;
+  document.getElementById("odemedurumu").selectedIndex = 0;
   document.getElementById("notlar").value = "";
 }
