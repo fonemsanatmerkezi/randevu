@@ -1,48 +1,40 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Randevu Raporları</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+const API_URL = "https://script.google.com/macros/s/AKfycbwgV6kTyeafxp9YcODP6rZYh3kt2YFDdybBLVMfgvdzyz_YViTrHLYFz6hWpsJhPBJO/exec";
 
-<div class="page">
-  <div class="container">
-    <h1>Randevu Raporları</h1>
+function raporGetir() {
+  const bas = document.getElementById("baslangic").value;
+  const bit = document.getElementById("bitis").value;
 
-    <label>Başlangıç Tarihi</label>
-    <input type="date" id="baslangic">
+  let url = API_URL;
+  if (bas && bit) {
+    url += `?baslangic=${bas}&bitis=${bit}`;
+  }
 
-    <label>Bitiş Tarihi</label>
-    <input type="date" id="bitis">
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      const alan = document.getElementById("raporAlan");
+      alan.innerHTML = "";
 
-    <button onclick="raporGetir()">Raporu Getir</button>
-    <p id="bosMesaj" style="display:none; text-align:center; margin-top:15px; font-weight:bold;">
-  Randevu bulunamadı
-</p>
+      if (data.length === 0) {
+        alan.innerHTML = "<p>❌ Randevu bulunamadı</p>";
+        return;
+      }
 
-
-    <table id="tablo">
-      <thead>
-        <tr>
-          <th>Ad Soyad</th>
-          <th>Telefon</th>
-          <th>Gün</th>
-          <th>Saat</th>
-          <th>Kişi</th>
-          <th>Oda</th>
-          <th>Ödeme</th>
-          <th>Not</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-
-    <button onclick="window.location.href='index.html'">⬅ Geri</button>
-  </div>
-</div>
-
-<script src="rapor.js"></script>
-</body>
-</html>
+      data.forEach(r => {
+        alan.innerHTML += `
+          <div class="kart">
+            <b>${r[1]}</b><br>
+            📞 ${r[2]}<br>
+            📅 ${r[3]} ${r[4]}<br>
+            👥 ${r[5]} | 🏠 ${r[6]}<br>
+            💳 ${r[7]}<br>
+            📝 ${r[8]}
+          </div>
+        `;
+      });
+    })
+    .catch(() => {
+      document.getElementById("raporAlan").innerHTML =
+        "<p>⚠️ Rapor alınırken hata oluştu</p>";
+    });
+}
