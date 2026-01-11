@@ -1,4 +1,4 @@
-const EXEC_URL = "https://script.google.com/macros/s/AKfycbxCa9m_EbL3aNY6PSv05IFfNyK_tfX1b8gjAhA-wsdnDeqYlD57KdCBbbVrYAT9FTJO/exec"; // Apps Script /exec URL
+const EXEC_URL = "https://script.google.com/macros/s/AKfycbx2EtxqxR0BzSuoDAnh3gJfPgw1g-JDdgc3r60TTJPTpgQ7WJHzECcRDBlrHWmwhA2u/exec"; // /exec URL
 
 function kaydet() {
   const veri = {
@@ -17,13 +17,13 @@ function kaydet() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(veri)
   })
-  .then(r => r.text())
-  .then(t => {
-    if (t === "OK") {
-      alert("✅ Randevu kaydedildi");
+  .then(r => r.json())
+  .then(res => {
+    if (res.success) {
+      alert("✅ " + res.message);
       temizleForm();
     } else {
-      alert("❌ " + t);
+      alert("❌ " + res.message);
     }
   })
   .catch(err => {
@@ -41,47 +41,4 @@ function temizleForm() {
   document.getElementById("oda").selectedIndex = 0;
   document.getElementById("odeme").selectedIndex = 0;
   document.getElementById("notlar").value = "";
-}
-
-function raporGetir() {
-  const baslangic = document.getElementById("baslangic").value;
-  const bitis = document.getElementById("bitis").value;
-
-  let url = EXEC_URL;
-  if (baslangic && bitis) {
-    url += `?baslangic=${baslangic}&bitis=${bitis}`;
-  }
-
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      const tbody = document.querySelector("#raporTablo tbody");
-      tbody.innerHTML = "";
-      if (data.length === 0) {
-        tbody.innerHTML = "<tr><td colspan='9'>Randevu bulunamadı</td></tr>";
-        return;
-      }
-
-      data.forEach(r => {
-        const tr = document.createElement("tr");
-        r.forEach(col => {
-          const td = document.createElement("td");
-          td.textContent = col || "";
-          tr.appendChild(td);
-        });
-        tbody.appendChild(tr);
-      });
-    })
-    .catch(err => {
-      alert("❌ Rapor alınırken hata oluştu");
-      console.error(err);
-    });
-}
-
-function raporYazdir() {
-  const div = document.querySelector(".rapor-alani");
-  const yeniPencere = window.open("");
-  yeniPencere.document.write(div.innerHTML);
-  yeniPencere.print();
-  yeniPencere.close();
 }
