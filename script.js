@@ -1,4 +1,4 @@
-const EXEC_URL = "https://script.google.com/macros/s/AKfycbywUBA38TWd7zdQfr3Ki0D7zc-Dmwd65vsKncs395HHnNg-9PMzfIB1j79gUo9XC8Cc/exec"; // Apps Script /exec URL
+const EXEC_URL = "https://script.google.com/macros/s/AKfycby4hfVViv3HD72UCY4kauJFw3FRCevpY--NVMC66Im2MpFo5bbF5slQ8SjJnrXFbhI/exec"; // Apps Script /exec URL
 
 function kaydet() {
   // ID otomatik oluşturabiliriz (timestamp kullanıyorum)
