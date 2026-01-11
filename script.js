@@ -15,7 +15,7 @@ form.addEventListener("submit", e => {
     notlar: document.getElementById("notlar").value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbwgd1VCKs1WxVuClr_BnDs1DIJi2CUdRTx7I2oqnazVYRlgHMlM4QJtKPnxgD2xW5e3cg/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbxUDxXMpWfSx-y947kuHyBM0_IwOqY2NUqSNrBjlWJ-sZOxGHXH1X1_-JgG-XUaXadWAA/exec", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" }
