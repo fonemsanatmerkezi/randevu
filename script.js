@@ -1,8 +1,8 @@
 const form = document.getElementById("randevuForm");
+const mesaj = document.getElementById("mesaj");
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-
   const data = {
     adsoyad: adsoyad.value,
     telefon: telefon.value,
@@ -14,24 +14,21 @@ form.addEventListener("submit", e => {
     notlar: notlar.value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbzwyqT1WwVOZ48jR69FuCNy2pwg-DU3QWDjMX6cvxKPCPFblN41e0m83t1LWt1ewMTTQw/exec", {
+  fetch("YOUR_DEPLOY_URL_HERE", {
     method: "POST",
     body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    }
+    headers: { "Content-Type": "application/json" }
   })
   .then(res => res.json())
   .then(res => {
-    if (res.status === "success") {
-      alert("Kayıt başarıyla alındı ✅");
+    if (res.success) {
+      mesaj.innerHTML = "<span style='color:#22c55e'>Kayıt başarılı ✅</span>";
       form.reset();
     } else {
-      alert("Kayıt hatası ❌");
+      mesaj.innerHTML = "<span style='color:#f87171'>Kayıt hatası ❌</span>";
     }
   })
-  .catch(err => {
-    console.error(err);
-    alert("Bağlantı hatası ❌");
+  .catch(() => {
+    mesaj.innerHTML = "<span style='color:#f87171'>Bağlantı hatası ❌</span>";
   });
 });
