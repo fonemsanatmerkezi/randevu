@@ -2,48 +2,37 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Randevu Kayıt</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Fonem Randevu Sistemi</title>
 </head>
 <body>
 
-<div class="container">
-  <h1>Randevu Kaydı</h1>
+<h1>Fonem Randevu Sistemi</h1>
 
-  <form id="randevuForm">
-    <label>Ad Soyad</label>
-    <input type="text" id="adsoyad" required>
+<input id="adSoyad" placeholder="Müşteri Adı Soyadı"><br><br>
+<input id="telefon" placeholder="05xxxxxxxxx"><br><br>
 
-    <label>Telefon</label>
-    <input type="tel" id="telefon" required>
+<select id="odeme">
+  <option value="Alınmadı">Alınmadı</option>
+  <option value="Alındı">Alındı</option>
+</select><br><br>
 
-    <label>Gün</label>
-    <input type="date" id="gun" required>
+<input type="date" id="gun"><br><br>
+<input type="time" id="saat"><br><br>
 
-    <label>Saat</label>
-    <input type="time" id="saat" required>
+<input type="number" id="kisiSayisi" value="1"><br><br>
 
-    <label>Kişi Sayısı</label>
-    <input type="number" id="kisi" min="1" required>
+<select id="oda">
+  <option>Sanki Sahne</option>
+  <option>Bozuk Mikrofon</option>
+  <option>Patlak Hoparlör</option>
+  <option>Çatlak Ses</option>
+  <option>Stüdyo - Prova</option>
+  <option>Stüdyo - Kayıt</option>
+</select><br><br>
 
-    <label>Oda</label>
-    <select id="oda">
-      <option>Oda 1</option>
-      <option>Oda 2</option>
-    </select>
+<textarea id="notlar" placeholder="Notlar"></textarea><br><br>
 
-    <label>Ödeme Durumu</label>
-    <select id="odeme">
-      <option>Ödendi</option>
-      <option>Ödenmedi</option>
-    </select>
-
-    <label>Notlar</label>
-    <textarea id="notlar"></textarea>
-
-    <button type="submit">Kaydet</button>
-  </form>
-</div>
+<button onclick="kaydet()">Kaydet</button>
 
 <script src="script.js"></script>
 </body>
