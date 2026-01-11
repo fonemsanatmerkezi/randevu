@@ -3,38 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <title>Fonem Randevu Sistemi</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Fonem Randevu Sistemi</h1>
+<div class="container">
 
-<input id="adSoyad" placeholder="Müşteri Adı Soyadı"><br><br>
-<input id="telefon" placeholder="05xxxxxxxxx"><br><br>
+  <h1>Fonem Randevu Sistemi</h1>
 
-<select id="odeme">
-  <option value="Alınmadı">Alınmadı</option>
-  <option value="Alındı">Alındı</option>
-</select><br><br>
+  <label>Müşteri Adı Soyadı</label>
+  <input id="adSoyad" placeholder="Müşteri Adı Soyadı">
 
-<input type="date" id="gun"><br><br>
-<input type="time" id="saat"><br><br>
+  <label>Telefon</label>
+  <input id="telefon" placeholder="05xxxxxxxxx">
 
-<input type="number" id="kisi" value="1"><br><br>
+  <label>Ödeme Durumu</label>
+  <select id="odeme">
+    <option value="Alınmadı">Alınmadı</option>
+    <option value="Alındı">Alındı</option>
+  </select>
 
-<select id="oda">
-  <option>Sanki Sahne</option>
-  <option>Bozuk Mikrofon</option>
-  <option>Patlak Hoparlör</option>
-  <option>Çatlak Ses</option>
-  <option>Stüdyo - Prova</option>
-  <option>Stüdyo - Kayıt</option>
-</select><br><br>
+  <label>Randevu Günü</label>
+  <input type="date" id="gun">
 
-<textarea id="notlar" placeholder="Notlar"></textarea><br><br>
+  <label>Randevu Saati</label>
+  <input type="time" id="saat">
 
-<button type="button" onclick="kaydet()">Kaydet</button>
+  <label>Kişi Sayısı</label>
+  <input type="number" id="kisi" value="1">
 
-<p id="mesaj"></p>
+  <label>Oda</label>
+  <select id="oda">
+    <option>Sanki Sahne</option>
+    <option>Bozuk Mikrofon</option>
+    <option>Patlak Hoparlör</option>
+    <option>Çatlak Ses</option>
+    <option>Stüdyo - Prova</option>
+    <option>Stüdyo - Kayıt</option>
+  </select>
+
+  <label>Notlar</label>
+  <textarea id="notlar" placeholder="Notlar"></textarea>
+
+  <button type="button" onclick="kaydet()">Kaydet</button>
+
+  <div id="mesaj"></div>
+
+</div>
 
 <script src="script.js"></script>
 </body>
