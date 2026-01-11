@@ -1,30 +1,32 @@
+const API_URL = "https://script.google.com/macros/s/AKfycbwnv-b64O-on-6RznkGm-XyUQ0EZkwcIlORtiSMUYXmIdj-yFuA7nn_REXFj3ehkMdoyA/exec";
+
 function kaydet() {
-  const veri = {
+  const data = {
     adSoyad: document.getElementById("adSoyad").value,
     telefon: document.getElementById("telefon").value,
     gun: document.getElementById("gun").value,
     saat: document.getElementById("saat").value,
-    kisiSayisi: document.getElementById("kisiSayisi").value,
+    kisi: document.getElementById("kisi").value,
     oda: document.getElementById("oda").value,
     odeme: document.getElementById("odeme").value,
     notlar: document.getElementById("notlar").value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbzTXLy2L0l3qhEYcoS_Bp2Ip_WdT7J5Fsg0L5WT4iPDSuI1WLC8NWtHKTEKeeRYHKAcDg/exec", {
+  document.getElementById("mesaj").innerText = "Kaydediliyor...";
+
+  fetch(API_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(veri)
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
   })
-  .then(r => r.text())
-  .then(t => {
-    if (t === "OK") {
-      alert("✅ Randevu kaydedildi");
-    } else {
-      alert("❌ " + t);
-    }
-  })
-  .catch(err => {
-    alert("❌ Bağlantı hatası");
-    console.error(err);
-  });
+    .then(res => res.json())
+    .then(res => {
+      document.getElementById("mesaj").innerText = res.message;
+    })
+    .catch(err => {
+      document.getElementById("mesaj").innerText = "Bağlantı hatası";
+      console.error(err);
+    });
 }
