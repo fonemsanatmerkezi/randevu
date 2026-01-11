@@ -10,7 +10,7 @@ function kaydet() {
     notlar: document.getElementById("notlar").value
   };
 
-  fetch("BURAYA_EXEC_URL_YAPIŞTIR", {
+  fetch("https://script.google.com/macros/s/AKfycbzTXLy2L0l3qhEYcoS_Bp2Ip_WdT7J5Fsg0L5WT4iPDSuI1WLC8NWtHKTEKeeRYHKAcDg/exec", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(veri)
