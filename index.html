@@ -1,59 +1,42 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Fonem Randevu Sistemi</title>
-
-  <!-- CACHE KIRMA -->
-  <link rel="stylesheet" href="style.css?v=3">
-</head>
-<body>
-
-<div class="container">
-
-  <h1>Fonem Randevu Sistemi</h1>
-
-  <label for="adsoyad">Müşteri Adı Soyadı</label>
-  <input id="adsoyad" type="text" placeholder="Ad Soyad">
-
-  <label for="telefon">Telefon</label>
-  <input id="telefon" type="text" placeholder="05xxxxxxxxx">
-
-  <label for="odeme">Ödeme Durumu</label>
-  <select id="odeme">
-    <option value="Alınmadı">Alınmadı</option>
-    <option value="Alındı">Alındı</option>
-  </select>
-
-  <label for="gun">Randevu Günü</label>
-  <input id="gun" type="date">
-
-  <label for="saat">Randevu Saati</label>
-  <input id="saat" type="time">
-
-  <label for="kisi">Kişi Sayısı</label>
-  <input id="kisi" type="number" value="1" min="1">
-
-  <label for="oda">Oda</label>
-  <select id="oda">
-    <option value="Sanki Sahne">Sanki Sahne</option>
-    <option value="Bozuk Mikrofon">Bozuk Mikrofon</option>
-    <option value="Patlak Hoparlör">Patlak Hoparlör</option>
-    <option value="Çatlak Ses">Çatlak Ses</option>
-    <option value="Stüdyo - Prova">Stüdyo - Prova</option>
-    <option value="Stüdyo - Kayıt">Stüdyo - Kayıt</option>
-  </select>
-
-  <label for="notlar">Notlar</label>
-  <textarea id="notlar" placeholder="Varsa özel notlar..."></textarea>
-
-  <button type="button" onclick="kaydet()">Kaydet</button>
-
-  <div id="mesaj" style="margin-top:10px; text-align:center;"></div>
-
-</div>
-
-<!-- CACHE KIRMA -->
-<script src="script.js?v=3"></script>
-</body>
-</html>
+<form id="randevuForm">
+  <div class="container">
+    <h1>Fonem Randevu Sistemi</h1>
+    <label>Müşteri Adı Soyadı</label>
+    <input id="adsoyad" type="text" required>
+    
+    <label>Telefon</label>
+    <input id="telefon" type="text" required>
+    
+    <label>Ödeme Durumu</label>
+    <select id="odeme">
+      <option>Alınmadı</option>
+      <option>Alındı</option>
+    </select>
+    
+    <label>Randevu Günü</label>
+    <input id="gun" type="date" required>
+    
+    <label>Randevu Saati</label>
+    <input id="saat" type="time" required>
+    
+    <label>Kişi Sayısı</label>
+    <input id="kisi" type="number" value="1" min="1">
+    
+    <label>Oda</label>
+    <select id="oda">
+      <option>Sanki Sahne</option>
+      <option>Bozuk Mikrofon</option>
+      <option>Patlak Hoparlör</option>
+      <option>Çatlak Ses</option>
+      <option>Stüdyo - Prova</option>
+      <option>Stüdyo - Kayıt</option>
+    </select>
+    
+    <label>Notlar</label>
+    <textarea id="notlar"></textarea>
+    
+    <button type="submit">Kaydet</button>
+    <div id="mesaj"></div>
+  </div>
+</form>
+<script src="script.js"></script>
