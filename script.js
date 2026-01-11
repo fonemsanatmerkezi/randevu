@@ -1,6 +1,10 @@
+alert("script.js yüklendi");
+
 const API_URL = "https://script.google.com/macros/s/AKfycbwnv-b64O-on-6RznkGm-XyUQ0EZkwcIlORtiSMUYXmIdj-yFuA7nn_REXFj3ehkMdoyA/exec";
 
 function kaydet() {
+  alert("Kaydet fonksiyonu çalıştı");
+
   const data = {
     adSoyad: document.getElementById("adSoyad").value,
     telefon: document.getElementById("telefon").value,
@@ -12,21 +16,16 @@ function kaydet() {
     notlar: document.getElementById("notlar").value
   };
 
-  document.getElementById("mesaj").innerText = "Kaydediliyor...";
-
   fetch(API_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
-    .then(res => res.json())
-    .then(res => {
-      document.getElementById("mesaj").innerText = res.message;
+    .then(r => r.text())
+    .then(t => {
+      alert("Sunucudan cevap geldi:\n" + t);
     })
     .catch(err => {
-      document.getElementById("mesaj").innerText = "Bağlantı hatası";
-      console.error(err);
+      alert("FETCH HATASI: " + err);
     });
 }
