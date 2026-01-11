@@ -2,57 +2,49 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Fonem Randevu Sistemi</title>
-
-  <!-- CACHE KIRICI -->
-  <link rel="stylesheet" href="style.css?v=1">
+  <title>Randevu Kayıt</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
+  <h1>Randevu Kaydı</h1>
 
-  <h1>Fonem Randevu Sistemi</h1>
+  <form id="randevuForm">
+    <label>Ad Soyad</label>
+    <input type="text" id="adsoyad" required>
 
-  <label>Müşteri Adı Soyadı</label>
-  <input id="adSoyad">
+    <label>Telefon</label>
+    <input type="tel" id="telefon" required>
 
-  <label>Telefon</label>
-  <input id="telefon">
+    <label>Gün</label>
+    <input type="date" id="gun" required>
 
-  <label>Ödeme Durumu</label>
-  <select id="odeme">
-    <option>Alınmadı</option>
-    <option>Alındı</option>
-  </select>
+    <label>Saat</label>
+    <input type="time" id="saat" required>
 
-  <label>Randevu Günü</label>
-  <input type="date" id="gun">
+    <label>Kişi Sayısı</label>
+    <input type="number" id="kisi" min="1" required>
 
-  <label>Randevu Saati</label>
-  <input type="time" id="saat">
+    <label>Oda</label>
+    <select id="oda">
+      <option>Oda 1</option>
+      <option>Oda 2</option>
+    </select>
 
-  <label>Kişi Sayısı</label>
-  <input type="number" id="kisi" value="1">
+    <label>Ödeme Durumu</label>
+    <select id="odeme">
+      <option>Ödendi</option>
+      <option>Ödenmedi</option>
+    </select>
 
-  <label>Oda</label>
-  <select id="oda">
-    <option>Sanki Sahne</option>
-    <option>Bozuk Mikrofon</option>
-    <option>Patlak Hoparlör</option>
-    <option>Çatlak Ses</option>
-    <option>Stüdyo - Prova</option>
-    <option>Stüdyo - Kayıt</option>
-  </select>
+    <label>Notlar</label>
+    <textarea id="notlar"></textarea>
 
-  <label>Notlar</label>
-  <textarea id="notlar"></textarea>
-
-  <button type="button" onclick="kaydet()">Kaydet</button>
-
-  <div id="mesaj"></div>
-
+    <button type="submit">Kaydet</button>
+  </form>
 </div>
 
-<script src="script.js?v=1"></script>
+<script src="script.js"></script>
 </body>
 </html>
