@@ -10,35 +10,36 @@
     <div class="container">
       <h1>Fonem Randevu Sistemi</h1>
 
-      <label for="adSoyad">Müşteri Adı Soyadı</label>
-      <input type="text" id="adSoyad" placeholder="Ad Soyad">
+      <!-- Randevu Formu -->
+      <label for="musteriadisoyadi">Müşteri Adı Soyadı</label>
+      <input type="text" id="musteriadisoyadi" placeholder="Ad Soyad">
 
-      <label for="telefon">Müşteri Telefon Numarası</label>
-      <input type="tel" id="telefon" placeholder="05xxxxxxxxx" maxlength="11">
+      <label for="musteritelefonu">Müşteri Telefon Numarası</label>
+      <input type="tel" id="musteritelefonu" placeholder="05xxxxxxxxx" maxlength="11">
 
-      <label for="odeme">Ödeme Durumu</label>
-      <select id="odeme">
-        <option value="Alınmadı" selected>Alınmadı</option>
-        <option value="Alındı">Alındı</option>
-      </select>
+      <label for="randevutarihi">Randevu Günü</label>
+      <input type="date" id="randevutarihi">
 
-      <label for="gun">Randevu Günü</label>
-      <input type="date" id="gun">
+      <label for="randevusaati">Randevu Saati</label>
+      <input type="time" id="randevusaati">
 
-      <label for="saat">Randevu Saati</label>
-      <input type="time" id="saat">
+      <label for="kisisayisi">Kişi Sayısı</label>
+      <input type="number" id="kisisayisi" min="1" value="1">
 
-      <label for="kisiSayisi">Kişi Sayısı</label>
-      <input type="number" id="kisiSayisi" min="1" value="1">
-
-      <label for="oda">Oda</label>
-      <select id="oda">
+      <label for="odaadi">Oda</label>
+      <select id="odaadi">
         <option>Bozuk Mikrofon</option>
         <option>Patlak Hoparlör</option>
         <option>Çatlak Ses</option>
         <option>Sanki Sahne</option>
         <option>Stüdyo - Prova</option>
         <option>Stüdyo - Kayıt</option>
+      </select>
+
+      <label for="odemedurumu">Ödeme Durumu</label>
+      <select id="odemedurumu">
+        <option value="Alınmadı" selected>Alınmadı</option>
+        <option value="Alındı">Alındı</option>
       </select>
 
       <label for="notlar">Notlar</label>
@@ -48,6 +49,7 @@
 
       <hr>
 
+      <!-- Rapor Bölümü -->
       <h2>Rapor</h2>
       <label for="baslangic">Başlangıç Tarihi</label>
       <input type="date" id="baslangic">
@@ -58,6 +60,7 @@
       <button onclick="rapor()">Rapor Getir</button>
 
       <pre id="raporAlani" style="background:#f2f2f2; padding:10px;"></pre>
+
     </div>
   </div>
 
