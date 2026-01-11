@@ -1,34 +1,25 @@
-const form = document.getElementById("randevuForm");
-const mesaj = document.getElementById("mesaj");
+const API_URL = "https://script.google.com/macros/s/AKfycbxxeYiCXxLQ-U8u8IwFWkXVHOAofzXnAXurBBtnTx9iWrTU81kMk88G0V6FoE3JyaRtCg/exec";
 
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  const data = {
-    adsoyad: adsoyad.value,
-    telefon: telefon.value,
-    gun: gun.value,
-    saat: saat.value,
-    kisi: kisi.value,
-    oda: oda.value,
-    odeme: odeme.value,
-    notlar: notlar.value
-  };
+function raporGetir() {
+  const bas = document.getElementById("baslangic").value;
+  const bit = document.getElementById("bitis").value;
+  const sonuc = document.getElementById("sonuc");
 
-  fetch("YOUR_DEPLOY_URL_HERE", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
-  })
-  .then(res => res.json())
-  .then(res => {
-    if (res.success) {
-      mesaj.innerHTML = "<span style='color:#22c55e'>Kayıt başarılı ✅</span>";
-      form.reset();
-    } else {
-      mesaj.innerHTML = "<span style='color:#f87171'>Kayıt hatası ❌</span>";
-    }
-  })
-  .catch(() => {
-    mesaj.innerHTML = "<span style='color:#f87171'>Bağlantı hatası ❌</span>";
-  });
-});
+  let url = API_URL;
+  if (bas && bit) url += `?baslangic=${bas}&bitis=${bit}`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      sonuc.innerHTML = "";
+      if (!data.length) { sonuc.innerHTML = "Randevu bulunamadı ❌"; return; }
+
+      data.forEach(r => {
+        sonuc.innerHTML += `
+          <div>
+            <b>${r[1]}</b> 📞 ${r[2]} 📅 ${r[3]} ${r[4]} 👥 ${r[5]} 🏠 ${r[6]} 💳 ${r[7]} 📝 ${r[8]||"-"}
+          </div>
+        `;
+      });
+    });
+}
