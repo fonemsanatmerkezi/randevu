@@ -1,4 +1,4 @@
-const EXEC_URL = "https://script.google.com/macros/s/AKfycbyFBQGFizX8FbNv-4JVChqXvVP3zuA-EKeqT0K_PiUWYpGKBvEhljqojj82yLu70cl1/exec"; // Apps Script /exec URL
+const EXEC_URL = "https://script.google.com/macros/s/AKfycbxCa9m_EbL3aNY6PSv05IFfNyK_tfX1b8gjAhA-wsdnDeqYlD57KdCBbbVrYAT9FTJO/exec"; // Apps Script /exec URL
 
 function kaydet() {
   const veri = {
