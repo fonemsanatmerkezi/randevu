@@ -1,4 +1,4 @@
-const EXEC_URL = "https://script.google.com/macros/s/AKfycbx2EtxqxR0BzSuoDAnh3gJfPgw1g-JDdgc3r60TTJPTpgQ7WJHzECcRDBlrHWmwhA2u/exec"; // /exec URL
+const EXEC_URL = "https://script.google.com/macros/s/AKfycbzXjPcapeS8hMju_EaEZ-01a4uc_wt05REPkWp2TWdnbXrvL55RHIt3z22UDK71USkk/exec"; // Apps Script /exec URL
 
 function kaydet() {
   const veri = {
@@ -19,17 +19,32 @@ function kaydet() {
   })
   .then(r => r.json())
   .then(res => {
-    if (res.success) {
-      alert("✅ " + res.message);
-      temizleForm();
-    } else {
-      alert("❌ " + res.message);
-    }
+    alert(res.success ? "✅ " + res.message : "❌ " + res.message);
+    if(res.success) temizleForm();
   })
   .catch(err => {
-    alert("❌ Bağlantı hatası");
+    alert("❌ Bağlantı hatası, URL ve erişim ayarlarını kontrol et");
     console.error(err);
   });
+}
+
+function rapor() {
+  const baslangic = document.getElementById("baslangic").value;
+  const bitis = document.getElementById("bitis").value;
+  let url = EXEC_URL;
+  if(baslangic && bitis) url += `?baslangic=${baslangic}&bitis=${bitis}`;
+
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      const alan = document.getElementById("raporAlani");
+      if(!data.length) alan.textContent = "📌 Randevu bulunamadı.";
+      else alan.textContent = JSON.stringify(data, null, 2);
+    })
+    .catch(err => {
+      alert("❌ Rapor alınırken hata oluştu");
+      console.error(err);
+    });
 }
 
 function temizleForm() {
