@@ -1,78 +1,50 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Randevu Raporu</title>
+const API_URL = "https://script.google.com/macros/s/AKfycbw1oUGP0DC46S1zlnC8hSJ9CmnenawehHVVOPN35v0UzQFHW3x7ofzzBZt_lNj4UAVNdg/exec";
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      padding: 20px;
-    }
+function raporGetir() {
+  const bas = document.getElementById("baslangic").value;
+  const bit = document.getElementById("bitis").value;
+  const sonuc = document.getElementById("sonuc");
 
-    h2 {
-      text-align: center;
-    }
+  let url = API_URL;
+  if (bas && bit) {
+    url += `?baslangic=${bas}&bitis=${bit}`;
+  }
 
-    .kart {
-      background: #1e1e1e;
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 10px;
-      box-shadow: 0 0 8px rgba(0,255,255,0.3);
-    }
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      sonuc.innerHTML = "";
 
-    p {
-      text-align: center;
-      opacity: 0.8;
-    }
-  </style>
-</head>
+      if (data.length === 0) {
+        sonuc.innerHTML = `<div class="yok">❌ Randevu bulunamadı</div>`;
+        return;
+      }
 
-<body onload="raporGetir()">
+      data.forEach(r => {
+        sonuc.innerHTML += `
+          <div class="kart">
+            <b>${r[1]}</b><br>
+            📞 ${r[2]}<br>
+            📅 ${tarih(r[3])} ${saat(r[4])}<br>
+            👥 ${r[5]} | 🏠 ${r[6]}<br>
+            💳 ${r[7]}<br>
+            📝 ${r[8] || "-"}
+          </div>
+        `;
+      });
+    })
+    .catch(() => {
+      sonuc.innerHTML = `<div class="yok">⚠️ Rapor alınırken hata oluştu</div>`;
+    });
+}
 
-  <h2>📋 Randevu Raporu</h2>
+function tarih(d) {
+  return new Date(d).toLocaleDateString("tr-TR");
+}
 
-  <div id="raporAlan">
-    <p>Yükleniyor...</p>
-  </div>
-
-  <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbwgV6kTyeafxp9YcODP6rZYh3kt2YFDdybBLVMfgvdzyz_YViTrHLYFz6hWpsJhPBJO/exec";
-
-    function raporGetir() {
-      fetch(API_URL)
-        .then(res => res.json())
-        .then(data => {
-          const alan = document.getElementById("raporAlan");
-          alan.innerHTML = "";
-
-          if (!data || data.length === 0) {
-            alan.innerHTML = "<p>Randevu bulunamadı</p>";
-            return;
-          }
-
-          data.forEach(r => {
-            alan.innerHTML += `
-              <div class="kart">
-                <b>${r[1]}</b><br>
-                📞 ${r[2]}<br>
-                📅 ${r[3]} ⏰ ${r[4]}<br>
-                👥 ${r[5]} kişi | 🏠 ${r[6]}<br>
-                💳 ${r[7]}<br>
-                📝 ${r[8] || "-"}
-              </div>
-            `;
-          });
-        })
-        .catch(() => {
-          document.getElementById("raporAlan").innerHTML =
-            "<p>Rapor alınırken bir hata oluştu</p>";
-        });
-    }
-  </script>
-
-</body>
-</html>
+function saat(d) {
+  return new Date(d).toLocaleTimeString("tr-TR", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
