@@ -1,25 +1,36 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbxxeYiCXxLQ-U8u8IwFWkXVHOAofzXnAXurBBtnTx9iWrTU81kMk88G0V6FoE3JyaRtCg/exec";
+const form = document.getElementById("randevuForm");
+const mesaj = document.getElementById("mesaj");
 
-function raporGetir() {
-  const bas = document.getElementById("baslangic").value;
-  const bit = document.getElementById("bitis").value;
-  const sonuc = document.getElementById("sonuc");
+form.addEventListener("submit", e => {
+  e.preventDefault();
 
-  let url = API_URL;
-  if (bas && bit) url += `?baslangic=${bas}&bitis=${bit}`;
+  const data = {
+    adsoyad: document.getElementById("adsoyad").value,
+    telefon: document.getElementById("telefon").value,
+    gun: document.getElementById("gun").value,
+    saat: document.getElementById("saat").value,
+    kisi: document.getElementById("kisi").value,
+    oda: document.getElementById("oda").value,
+    odeme: document.getElementById("odeme").value,
+    notlar: document.getElementById("notlar").value
+  };
 
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      sonuc.innerHTML = "";
-      if (!data.length) { sonuc.innerHTML = "Randevu bulunamadı ❌"; return; }
-
-      data.forEach(r => {
-        sonuc.innerHTML += `
-          <div>
-            <b>${r[1]}</b> 📞 ${r[2]} 📅 ${r[3]} ${r[4]} 👥 ${r[5]} 🏠 ${r[6]} 💳 ${r[7]} 📝 ${r[8]||"-"}
-          </div>
-        `;
-      });
-    });
-}
+  fetch("YOUR_DEPLOY_URL_HERE", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.success) {
+      mesaj.innerHTML = "<span style='color:#22c55e'>Kayıt başarılı ✅</span>";
+      form.reset();
+    } else {
+      mesaj.innerHTML = "<span style='color:#f87171'>Kayıt hatası ❌</span>";
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    mesaj.innerHTML = "<span style='color:#f87171'>Bağlantı hatası ❌</span>";
+  });
+});
