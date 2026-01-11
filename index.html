@@ -3,67 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Fonem Randevu Sistemi</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="page">
-    <div class="container">
-      <h1>Fonem Randevu Sistemi</h1>
-<label for="adSoyad">Müşteri Adı Soyadı</label>
-<input
-  type="text"
-  id="adSoyad"
-  placeholder="Ad Soyad">
+<h1>Fonem Randevu Sistemi</h1>
 
-<label for="telefon">Müşteri Telefon Numarası</label>
-<input
-  type="tel"
-  id="telefon"
-  placeholder="05xxxxxxxxx"
-  maxlength="11">
+<input id="adSoyad" placeholder="Müşteri Adı Soyadı"><br><br>
+<input id="telefon" placeholder="05xxxxxxxxx"><br><br>
 
-<label for="odeme">Ödeme Durumu</label>
 <select id="odeme">
-  <option value="Alınmadı" selected>Alınmadı</option>
+  <option value="Alınmadı">Alınmadı</option>
   <option value="Alındı">Alındı</option>
-</select>
+</select><br><br>
 
-<label for="gun">Randevu Günü</label>
-<input type="date" id="gun">
+<input type="date" id="gun"><br><br>
+<input type="time" id="saat"><br><br>
 
-<label for="saat">Randevu Saati</label>
-<input type="time" id="saat">
+<input type="number" id="kisiSayisi" value="1"><br><br>
 
-<label for="kisiSayisi">Kişi Sayısı</label>
-<input
-  type="number"
-  id="kisiSayisi"
-  min="1"
-  value="1">
-
-<label for="oda">Oda</label>
 <select id="oda">
+  <option>Sanki Sahne</option>
   <option>Bozuk Mikrofon</option>
   <option>Patlak Hoparlör</option>
   <option>Çatlak Ses</option>
-  <option>Sanki Sahne</option>
   <option>Stüdyo - Prova</option>
   <option>Stüdyo - Kayıt</option>
-</select>
+</select><br><br>
 
-<label for="notlar">Notlar</label>
-<textarea id="notlar"></textarea>
+<textarea id="notlar" placeholder="Notlar"></textarea><br><br>
 
 <button onclick="kaydet()">Kaydet</button>
-      <button onclick="window.location.href='rapor.html'">
-  📊 Rapor
-</button>
 
-
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
