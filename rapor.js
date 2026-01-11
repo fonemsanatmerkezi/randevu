@@ -1,59 +1,32 @@
-// ⚠️ Kendi Apps Script URL'ni buraya koy
-const URL = "APPS_SCRIPT_URL_BURAYA";
+const API_URL = "https://script.google.com/macros/s/AKfycbwgV6kTyeafxp9YcODP6rZYh3kt2YFDdybBLVMfgvdzyz_YViTrHLYFz6hWpsJhPBJO/exec";
 
-// Rapor getir fonksiyonu
 function raporGetir() {
-  const baslangic = document.getElementById("baslangic").value;
-  const bitis = document.getElementById("bitis").value;
-
-  let istek = URL;
-
-  if (baslangic && bitis) {
-    istek += `?baslangic=${baslangic}&bitis=${bitis}`;
-  }
-
-  fetch(istek)
+  fetch(API_URL)
     .then(res => res.json())
-    .then(veri => tabloYaz(veri))
-    .catch(err => {
-      console.error(err);
-      alert("Rapor alınırken bir hata oluştu.");
+    .then(data => {
+      const alan = document.getElementById("raporAlan");
+      alan.innerHTML = "";
+
+      if (!data || data.length === 0) {
+        alan.innerHTML = "<p>Randevu bulunamadı</p>";
+        return;
+      }
+
+      data.forEach(r => {
+        alan.innerHTML += `
+          <div class="kart">
+            <b>${r[1]}</b><br>
+            📞 ${r[2]}<br>
+            📅 ${r[3]} ⏰ ${r[4]}<br>
+            👥 ${r[5]} | 🏠 ${r[6]}<br>
+            💳 ${r[7]}<br>
+            📝 ${r[8] || "-"}
+          </div>
+        `;
+      });
+    })
+    .catch(() => {
+      document.getElementById("raporAlan").innerHTML =
+        "<p>Rapor alınırken bir hata oluştu</p>";
     });
 }
-
-// Tabloya yazma ve boş mesaj kontrolü
-function tabloYaz(veri) {
-  const tbody = document.querySelector("#tablo tbody");
-  const mesaj = document.getElementById("bosMesaj");
-
-  // Tabloyu temizle
-  tbody.innerHTML = "";
-
-  // Eğer veri yoksa mesaj göster
-  if (veri.length === 0) {
-    mesaj.style.display = "block";
-    return;
-  }
-
-  // Veri varsa mesajı gizle
-  mesaj.style.display = "none";
-
-  // Her randevuyu tabloya ekle
-  veri.forEach(r => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${r[1]}</td>
-      <td>${r[2]}</td>
-      <td>${r[3]}</td>
-      <td>${r[4]}</td>
-      <td>${r[5]}</td>
-      <td>${r[6]}</td>
-      <td>${r[7]}</td>
-      <td>${r[8]}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-// Sayfa açılınca otomatik olarak bugünün randevularını getir
-window.onload = raporGetir;
