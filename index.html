@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Fonem Randevu Sistemi</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- CACHE KIRICI -->
+  <link rel="stylesheet" href="style.css?v=1">
 </head>
 <body>
 
@@ -12,15 +14,15 @@
   <h1>Fonem Randevu Sistemi</h1>
 
   <label>Müşteri Adı Soyadı</label>
-  <input id="adSoyad" placeholder="Müşteri Adı Soyadı">
+  <input id="adSoyad">
 
   <label>Telefon</label>
-  <input id="telefon" placeholder="05xxxxxxxxx">
+  <input id="telefon">
 
   <label>Ödeme Durumu</label>
   <select id="odeme">
-    <option value="Alınmadı">Alınmadı</option>
-    <option value="Alındı">Alındı</option>
+    <option>Alınmadı</option>
+    <option>Alındı</option>
   </select>
 
   <label>Randevu Günü</label>
@@ -43,7 +45,7 @@
   </select>
 
   <label>Notlar</label>
-  <textarea id="notlar" placeholder="Notlar"></textarea>
+  <textarea id="notlar"></textarea>
 
   <button type="button" onclick="kaydet()">Kaydet</button>
 
@@ -51,6 +53,6 @@
 
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=1"></script>
 </body>
 </html>
