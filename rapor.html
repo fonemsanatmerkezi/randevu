@@ -1,40 +1,83 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbwgV6kTyeafxp9YcODP6rZYh3kt2YFDdybBLVMfgvdzyz_YViTrHLYFz6hWpsJhPBJO/exec";
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fonem Randevu Raporu</title>
 
-function raporGetir() {
-  const bas = document.getElementById("baslangic").value;
-  const bit = document.getElementById("bitis").value;
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
 
-  let url = API_URL;
-  if (bas && bit) {
-    url += `?baslangic=${bas}&bitis=${bit}`;
-  }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-  fetch(url)
-    .then(r => r.json())
-    .then(data => {
-      const alan = document.getElementById("raporAlan");
-      alan.innerHTML = "";
+    .filtre {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
 
-      if (data.length === 0) {
-        alan.innerHTML = "<p>❌ Randevu bulunamadı</p>";
-        return;
-      }
+    input, button {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+    }
 
-      data.forEach(r => {
-        alan.innerHTML += `
-          <div class="kart">
-            <b>${r[1]}</b><br>
-            📞 ${r[2]}<br>
-            📅 ${r[3]} ${r[4]}<br>
-            👥 ${r[5]} | 🏠 ${r[6]}<br>
-            💳 ${r[7]}<br>
-            📝 ${r[8]}
-          </div>
-        `;
-      });
-    })
-    .catch(() => {
-      document.getElementById("raporAlan").innerHTML =
-        "<p>⚠️ Rapor alınırken hata oluştu</p>";
-    });
-}
+    button {
+      background: #22c55e;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #16a34a;
+    }
+
+    #sonuc {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .kart {
+      background: #020617;
+      border-left: 4px solid #22c55e;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+
+    .yok {
+      text-align: center;
+      color: #f87171;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>📊 Fonem Randevu Raporu</h1>
+
+  <div class="filtre">
+    <input type="date" id="baslangic">
+    <input type="date" id="bitis">
+    <button onclick="raporGetir()">Rapor Getir</button>
+  </div>
+
+  <div id="sonuc"></div>
+
+  <script src="rapor.js"></script>
+</body>
+</html>
